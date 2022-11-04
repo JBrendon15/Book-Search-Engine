@@ -2,6 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express')
 const path = require('path');
 const db = require('./config/connection');
+const { authMiddleware } = require('./utils/auth');
 // const routes = require('./routes');
 
 //Require the typeDefs and resolvers for GraphQL
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: authMiddleware,
 });
 
 app.use(express.urlencoded({ extended: true }));
