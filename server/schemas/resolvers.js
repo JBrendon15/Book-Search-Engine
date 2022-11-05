@@ -38,7 +38,7 @@ const resolvers = {
               const updatedUser = await User.findByIdAndUpdate(
                 { _id: context.user._id },
                 { $addToSet: { savedBooks: args.favoriteBook } },
-                { new: true, runValidators: true }
+                { new: true }
               );
       
               return updatedUser;
