@@ -67,7 +67,7 @@ const SearchBooks = () => {
     if (!token) {
       return false;
     }
-    console.log(token)
+    console.log(`TOKEN: ${token}`)
     try {
      await saveBook({
         variables: {favoriteBook: bookToSave}

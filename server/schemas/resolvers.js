@@ -10,12 +10,13 @@ const resolvers = {
     },
 
     Mutation: {
-        addUser: async (parent, { username, email, password}) => {
+        addUser: async (parent, { username, email, password}, context) => {
             const user = await User.create({ username, email, password });
             const token = signToken(user);
+            console.log(`Context from adduser: ${context}`)
             return { token, user };
         },
-        login: async(parent, { email, password}) => {
+        login: async(parent, { email, password}, context) => {
             const user = await User.findOne({ email });
 
             if(!user){
@@ -29,6 +30,7 @@ const resolvers = {
             }
 
             const token = signToken(user);
+            console.log(`Context from login: ${context.user}`)
             return { token, user };
         },
         saveBook: async (parent, args, context) => {
