@@ -25,12 +25,20 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_BOOK = gql`
-    mutation saveBook($favoriteBook: FaveBook!){
+    mutation saveBook($favoriteBook: FaveBook){
         saveBook(favoriteBook: $favoriteBook) {
            _id
            username
+           email
            bookCount
-           savedBooks 
+           savedBooks {
+            bookId
+            authors
+            description
+            title
+            image
+            link
+           }
         }
     }
 `;
@@ -40,7 +48,14 @@ export const REMOVE_BOOK = gql`
         removeBook(bookId: $bookId) {
             username
             bookCount
-            savedBooks
+            savedBooks {
+                bookId
+                authors
+                description
+                title
+                image
+                link
+            }
         }
     }
 `;

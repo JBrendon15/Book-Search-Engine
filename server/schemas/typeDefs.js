@@ -11,16 +11,16 @@ type User {
 }
 
 type Book {
-    bookId: String
+    bookId: String!
     authors: [String]
-    description: String
     title: String
+    description: String
     image: String
     link: String
 }
 
 input FaveBook {
-    bookId: String
+    bookId: String!
     authors: [String]
     title: String
     description: String
